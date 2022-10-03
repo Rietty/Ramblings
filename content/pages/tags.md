@@ -1,5 +1,5 @@
 +++
 path = "tags"
-template = "tags\\list.html"
+template = "list.html"
 title = "tag archive (all tags)"
 +++

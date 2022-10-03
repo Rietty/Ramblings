@@ -1,3 +1,4 @@
+.\zola.exe build
 git pull
 git add .
 git commit -am "Publishing site"

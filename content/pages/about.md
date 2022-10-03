@@ -8,4 +8,4 @@ You can find me on [Twitch](https://twitch.tv/rietty), [Twitter](https://twitter
 
 A few hobbies of mine include watching anime, reading, writing code and playing video games. I'm also a [huge cat lover](https://www.reddit.com/r/IllegallySmolCats/).
 
-[This website](https://github.com/Rietty/Ramblings) was made using the [Zola](https://www.getzola.org/) and [Terminimal](https://github.com/pawroman/zola-theme-terminimal).
+[This website](https://github.com/Rietty/Ramblings) was made using [Zola](https://www.getzola.org/) and [Terminimal](https://github.com/pawroman/zola-theme-terminimal).

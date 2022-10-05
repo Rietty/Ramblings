@@ -28,7 +28,7 @@ background_color = "dark"
 
 logo_text = "Rietty's Ramblings"
 
-copyright_html = "© 2022 Juliette H. Lavoie :: All Rights Reserved"
+copyright_html = "Copyright © 2022 - Juliette H. Lavoie"
 
 # Pagination
 enable_post_view_navigation = true

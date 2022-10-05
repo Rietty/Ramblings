@@ -5,9 +5,3 @@ date = 2022-10-03
 tags = ["introduction"]
 +++
 Hello, World! This is my first post. I haven't actually written it yet, but I'm sure it will be great. Stay tuned!
-
-```rust
-fn main() {
-	println!("Hello, World!");
-}
-```

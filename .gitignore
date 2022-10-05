@@ -1,1 +1,5 @@
 themes/
+*.pem
+static/
+*.ps1
+*.exe

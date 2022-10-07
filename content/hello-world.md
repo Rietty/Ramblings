@@ -43,4 +43,4 @@ git pull
 rsync -av ~/my-website/public/ ~/stack/nginx/html
 ```
 
-This is a very simple setup, but it works for me. I am sure there are better ways to do this, but this is what I came up with. I am sure I will be tweaking this setup as I go along, but for now it works. I'm excited to see where this goes and what I can do with it as I build my site a bit more.
+This is a very simple setup, and I'm sure there are better ways to approach this, however it currently works fine. I'm sure I will be tweaking this setup as I go along. Very excited to see where this goes from here as I continue to learn more about Zola and the various other tools I am using.

@@ -7,7 +7,7 @@ tags = ["introduction", "zola", "terminimal", "lightsail"]
 
 Hello, World! It goes without saying that this is my first blog post. I figured I would take this time to document my process of setting up this website and the amount of effort that went into it. To begin with, I leveraged a few pieces of software to build the website, including: [Zola](https://github.com/getzola/zola) for the static site generator, [Terminimal](https://github.com/pawroman/zola-theme-terminimal) for the theme, and [AWS Lightsail](https://aws.amazon.com/lightsail/) for hosting. 
 
-When I originally had this website, it was a simple wordpress instance I was not very happy with. It was buggy, relied on various plugins, was a pain to put anything on it, and above all it did not look how I wanted it to. Thus, I decided to explore other options and eventually someone pointed me in the direction of Zola. I had heard of static site generators before, but never really looked into them. I figured I would give it a shot and see what could be done with it.
+When I originally had this website, it was a simple wordpress instance I was not very happy with. It was buggy, relied on various plugins, difficult to update, and above all it did not look like I had envisoned. Thus, I decided to explore other options and eventually [someone](https://notnite.com/) pointed me in the direction of Zola.
 
 Zola itself is a static site generator written in Rust, which happns to be my favourite language (currently), the generator itself is a single binary and can be dropped pretty much anywhere. Along with an impressive list of features and amazingly fast build times, it was a no-brainer to go with it.
 

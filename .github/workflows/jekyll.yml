@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Checkout from Source Control
         uses: actions/checkout@v4
-        
+
       - name: Install Ruby
         # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
         uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
@@ -85,7 +85,7 @@ jobs:
 
       - name: Deploy ZIP on Lightsail via SSH
         run: |
-          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+          ssh -i lightsail_key.pem -o StrictHostKeyChecking=no ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
             rm -rf ~/stack/nginx/html/*
             unzip -o /tmp/compiled-site.zip -d ~/stack/nginx/html/
             rm /tmp/compiled-site.zip

@@ -73,4 +73,4 @@ jobs:
           ssh_key: ${{ secrets.LIGHTSAIL_KEY }}
       - name: Publish to AWS Lightsail
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" _site/ ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }}:/home/${{ secrets.LIGHTSAIL_USER }}/stack/nginx/html/
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" /home/runner/work/Ramblings/Ramblings/_site ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }}:/home/${{ secrets.LIGHTSAIL_USER }}/stack/nginx/html/

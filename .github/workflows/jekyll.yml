@@ -34,6 +34,7 @@ jobs:
     steps:
       - name: Checkout from Source Control
         uses: actions/checkout@v4
+        
       - name: Install Ruby
         # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
         uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
@@ -41,11 +42,13 @@ jobs:
           ruby-version: '3.4.1' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
+
       - name: Build Jekyll Site with Bundler
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+
       - name: Upload to Artifact Repository
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-artifact@v4
@@ -61,20 +64,32 @@ jobs:
     steps:
       - name: Checkout from Source Control
         uses: actions/checkout@v4
+
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: compiled-site
           path: _site
+          
+      - name: Create ZIP Archive
+        run: zip -r compiled-site.zip _site
+
       - name: Write SSH key to file
         run: |
           echo "${{ secrets.LIGHTSAIL_KEY }}" > lightsail_key.pem
           chmod 600 lightsail_key.pem
-      - uses: GuillaumeFalourd/setup-rsync@v1.2
-        name: Setup Rsync with SSH
-        id: rsync
-        with:
-          ssh_key: lightsail_key.pem
-      - name: Publish to AWS Lightsail
+
+      - name: Copy ZIP to Lightsail via SCP
         run: |
-          rsync -avz -e "ssh -i lightsail_key.pem -o StrictHostKeyChecking=no" _site/ ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }}:/home/${{ secrets.LIGHTSAIL_USER }}/stack/nginx/html/
+          scp -i lightsail_key.pem -o StrictHostKeyChecking=no compiled-site.zip ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }}:/tmp/
+
+      - name: Deploy ZIP on Lightsail via SSH
+        run: |
+          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+            rm -rf ~/stack/nginx/html/*
+            unzip -o /tmp/compiled-site.zip -d ~/stack/nginx/html/
+            rm /tmp/compiled-site.zip
+          EOF
+
+      - name: Clean Up ZIP Locally
+        run: rm compiled-site.zip

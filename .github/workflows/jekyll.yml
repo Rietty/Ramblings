@@ -66,6 +66,7 @@ jobs:
         with:
           name: compiled-site
           path: _site
+      - uses: GuillaumeFalourd/setup-rsync@v1.2
       - uses: burnett01/rsync-deployments@7.0.2
         name: Publish to AWS Lightsail via RSync
         with:

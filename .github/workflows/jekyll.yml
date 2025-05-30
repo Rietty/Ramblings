@@ -73,6 +73,8 @@ jobs:
       - uses: GuillaumeFalourd/setup-rsync@v1.2
         name: Setup Rsync with SSH
         id: rsync
+        with:
+          ssh_key: lightsail_key.pem
       - name: Publish to AWS Lightsail
         run: |
-          rsync -avz -e "ssh -i lightsail_key.pem -o StrictHostKeyChecking=no" _site/ ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }}:/home/${{ secrets.LIGHTSAIL_USER }}/stack/nginx/html/
+          rsync -avz -e _site/ ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }}:/home/${{ secrets.LIGHTSAIL_USER }}/stack/nginx/html/

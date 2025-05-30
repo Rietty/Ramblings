@@ -1,0 +1,25 @@
+# For documentation on this file, see:
+# https://github.com/riggraz/no-style-please#customize-the-menu
+
+entries:
+  - title: info
+    entries:
+      - title: hi, i'm rietty and these are my ramblings
+      - title: my github
+        url: https://github.com/rietty
+      - title: my twitch
+        url: https://twitch.tv/rietty
+
+  - title: all posts
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: visit archive...
+      show_more_url: archive.html
+
+  - title: other
+    entries:
+      - title: rss feed
+        url: feed.xml
+      - title: contact me
+        url: "mailto:rie.juliette@gmail.com"

@@ -72,7 +72,7 @@ jobs:
           path: _site
           
       - name: Create ZIP Archive
-        run: zip -r compiled-site.zip _site
+        run: cd _site && zip -r ../compiled-site.zip .
 
       - name: Write SSH key to file
         run: |

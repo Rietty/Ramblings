@@ -44,4 +44,4 @@ This setup ensures that publishing new content or making changes is as simple as
 ---
 ## Final Words
 
-Thank you for visiting my blog! I don't plan on having a specific post schedule but I do look forward to writing for this! Hopefully you all enjoy reading it!
+Thank you for visiting my blog! I don't plan on having a specific post schedule but I do look forward to writing for this! Hopefully you all enjoy reading it! :)

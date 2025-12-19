@@ -21,5 +21,3 @@ entries:
     entries:
       - title: rss feed
         url: feed.xml
-      - title: contact me
-        url: "mailto:rie.juliette@gmail.com"

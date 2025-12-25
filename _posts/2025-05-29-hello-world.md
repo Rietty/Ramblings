@@ -11,23 +11,15 @@ This site is built with [Jekyll](https://jekyllrb.com/), a simple and powerful s
 ---
 ## Infrastructure
 
-This site is hosted on [Amazon Lightsail](https://lightsail.aws.amazon.com/), a simple cloud platform for deploying web applications and websites. Lightsail provides me with a static IP address, ensuring the site is always reachable at the same address, even if the underlying server changes or I rebuild the instance.
+This site is hosted on an [Amazon S3 Bucket](https://aws.amazon.com/) and served as a static site.
 
 ### DNS Management
 
-DNS records are configured to point the domain to the static IP address. This means I can just add or remove records from the DNS to increase
+DNS and routing is handled via Amazon's Route 53 and CloudFront.
 
-### NGINX Stack with Bitnami
+### SSL Certificates with Amazon
 
-The server uses the [Bitnami NGINX stack](https://bitnami.com/stack/nginx), which bundles [NGINX](https://nginx.org/) with other useful tools for easy deployment and management.
-
-### SSL Certificates with Let's Encrypt
-
-[Let's Encrypt](https://letsencrypt.org/) provides free SSL/TLS certificates for HTTPS. Certificates are set up with automatic renewal via `cron` so I don't need to worry about renewing it manually every 90 days.
-
-### Custom Routing with NGINX
-
-NGINX is configured for custom routing, allowing different subdomains (such as [twitch.rietty.com](https://twitch.rietty.com)) to serve specific content, apps or just plain old redirects as I need them.
+Amazon provides free SSL/TLS certificates via CloudFront. Certificates are set up with automatic renewal and do not need to be managed.
 
 ---
 ## Storage and Deployment
@@ -37,7 +29,7 @@ All of the site's raw files are stored in a public [GitHub repository](https://g
 For deployment, I use GitHub Actions to automate the build and deployment process:
 
 - **Build:** On every push to the main branch, GitHub Actions runs a workflow that installs dependencies (including Jekyll and Bundler) and builds the static site.
-- **Deploy:** After building, the workflow uses SSH and SCP to securely copy the generated site files to my Lightsail instance, updating the live site automatically.
+- **Deploy:** After building, the workflow uses SSH and SCP to securely copy the generated site files to my S3 bucket, updating the live site automatically.
 
 This setup ensures that publishing new content or making changes is as simple as committing and pushing to GitHub.
 
